@@ -28,7 +28,7 @@ public class Mainmenu extends Activity implements OnClickListener
 
         setContentView(R.layout.mainmenu);
 
-        btn_start = (Button)findViewById(R.id.btn_start);
+        btn_start = (Button)findViewById(R.id.btn_start); // noice
         btn_start.setOnClickListener(this);  // Set Listener to this button --> Start Button
 
         btn_back = (Button)findViewById(R.id.btn_back);
