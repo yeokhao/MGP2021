@@ -9,6 +9,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+// comment for git testing
+
 public class Mainmenu extends Activity implements OnClickListener
 {
     // Define buttons. We have 2 buttons (Start, Back)
