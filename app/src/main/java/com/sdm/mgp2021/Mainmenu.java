@@ -2,7 +2,9 @@ package com.sdm.mgp2021;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -11,7 +13,7 @@ import android.widget.Button;
 
 // comment for git testing
 
-public class Mainmenu extends Activity implements OnClickListener
+public class Mainmenu extends Activity implements OnClickListener, StateBase
 {
     // Define buttons. We have 2 buttons (Start, Back)
     private Button btn_start;
@@ -71,6 +73,32 @@ public class Mainmenu extends Activity implements OnClickListener
         }
 
         startActivity(intent);
+    }
+
+    @Override
+    public void Render(Canvas _canvas)
+    {
+    }
+
+    @Override
+    public void OnEnter(SurfaceView _view)
+    {
+    }
+
+    @Override
+    public void OnExit()
+    {
+    }
+
+    @Override
+    public void Update(float _dt)
+    {
+    }
+
+    @Override
+    public String GetName()
+    {
+        return "Mainmenu";
     }
 
     @Override
