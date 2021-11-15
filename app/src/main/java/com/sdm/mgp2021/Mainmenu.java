@@ -11,9 +11,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-// comment for git testing
+// Main Menu -> Game Page -> Game View -> SurfaceView
+// Change State --> "MainGame" State == MainGameSceneState
 
-public class Mainmenu extends Activity implements OnClickListener, StateBase
+public class Mainmenu extends Activity implements OnClickListener, StateBase // Using StateBase class
 {
     // Define buttons. We have 2 buttons (Start, Back)
     private Button btn_start;
@@ -40,6 +41,8 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase
 
         btn_options = (Button)findViewById(R.id.btn_options);
         btn_options.setOnClickListener(this);  // Set Listener to this button --> Options Button
+
+        StateManager.Instance.AddState(new Mainmenu());
     }
 
     @Override
@@ -61,7 +64,8 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase
         {
             //intent -> to set to another class which is another page or screen to be launch.
             //Equal to change screen
-            intent.setClass(this, Splashpage.class);
+            intent.setClass(this, GamePage.class);
+            StateManager.Instance.ChangeState("MainGame"); // Default is like a loading page
         }
         else if (v == btn_back)
         {
