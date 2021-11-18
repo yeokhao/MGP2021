@@ -74,6 +74,7 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         else if (v == btn_options)
         {
             intent.setClass(this, Options.class);
+            StateManager.Instance.ChangeState("Options");
         }
 
         startActivity(intent);
