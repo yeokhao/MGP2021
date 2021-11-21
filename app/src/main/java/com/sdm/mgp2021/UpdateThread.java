@@ -17,6 +17,7 @@ public class UpdateThread extends Thread {
 
     private boolean isRunning = false;
 
+    // We will be adding more managers here
     public UpdateThread(GameView _view)
     {
         view = _view;
@@ -26,7 +27,13 @@ public class UpdateThread extends Thread {
         StateManager.Instance.Init(_view);
         EntityManager.Instance.Init(_view);
         GameSystem.Instance.Init(_view);
+
+        //Audio Manager
+        //Touch Manager
+        //Resource Manager
     }
+
+    // Note: when game is paused, game thread has to be paused as well
 
     public boolean IsRunning()
     {
@@ -53,6 +60,7 @@ public class UpdateThread extends Thread {
         // This is to calculate delta time (more precise)
         long prevTime = System.nanoTime();
 
+        // Need to edit to the start state that you have, state here is MainGame
         StateManager.Instance.Start("MainGame");  // To edit to whichever state to start with.
 
         // This is the game loop

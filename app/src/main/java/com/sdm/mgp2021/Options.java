@@ -2,14 +2,16 @@ package com.sdm.mgp2021;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-public class Options extends Activity implements OnClickListener
+public class Options extends Activity implements OnClickListener, StateBase
 {
     private Button btn_options_back;
 
@@ -23,7 +25,7 @@ public class Options extends Activity implements OnClickListener
         //Hide Top Bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.options);
 
         btn_options_back = (Button)findViewById(R.id.btn_options_back);
         btn_options_back.setOnClickListener(this);  // Set Listener to this button --> Back Button
@@ -50,6 +52,32 @@ public class Options extends Activity implements OnClickListener
         }
 
         startActivity(intent);
+    }
+
+    @Override
+    public void Render(Canvas _canvas)
+    {
+    }
+
+    @Override
+    public void OnEnter(SurfaceView _view)
+    {
+    }
+
+    @Override
+    public void OnExit()
+    {
+    }
+
+    @Override
+    public void Update(float _dt)
+    {
+    }
+
+    @Override
+    public String GetName()
+    {
+        return "Options";
     }
 
     @Override

@@ -6,7 +6,7 @@ import android.view.SurfaceView;
 
 // Created by TanSiewLan2021
 
-public class GameSystem{
+public class GameSystem {
     public final static GameSystem Instance = new GameSystem();
 
     // Game stuff
@@ -25,8 +25,8 @@ public class GameSystem{
     {
 
         // We will add all of our states into the state manager here!
-        //StateManager.Instance.AddState(new Mainmenu());
-        //StateManager.Instance.AddState(new MainGameSceneState());
+        StateManager.Instance.AddState(new Mainmenu());
+        StateManager.Instance.AddState(new MainGameSceneState());
     }
 
     public void SetIsPaused(boolean _newIsPaused)

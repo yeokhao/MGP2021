@@ -84,6 +84,7 @@ public class EntityManager {
                     {
                         Collidable second = (Collidable) otherEntity;
 
+                        //Default is using sphere to sphere collision. Edit where necessary, esp if creating AABB collision
                         if (Collision.SphereToSphere(first.GetPosX(), first.GetPosY(), first.GetRadius(), second.GetPosX(), second.GetPosY(), second.GetRadius()))
                         {
                             first.OnHit(second);
