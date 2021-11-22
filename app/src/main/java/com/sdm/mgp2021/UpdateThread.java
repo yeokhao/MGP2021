@@ -63,6 +63,8 @@ public class UpdateThread extends Thread {
         // Need to edit to the start state that you have, state here is MainGame
         StateManager.Instance.Start("MainGame");  // To edit to whichever state to start with.
 
+        // Change SplashPage to be a state -> replace "MainGame" with "SplashState" (and change Splashscreen GetName function)
+
         // This is the game loop
         while (isRunning && StateManager.Instance.GetCurrentState() != "INVALID")
         {
