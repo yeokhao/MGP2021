@@ -35,7 +35,7 @@ public class RenderBackground implements EntityBase
     @Override
     public void Init(SurfaceView _view)
     {
-        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.gamescene);
+        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.stonk);
 
         // Find the surfaceview size or the screen size.
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
