@@ -12,6 +12,8 @@ public class RenderBackground implements EntityBase
     private boolean isDone = false;
     private Bitmap bmp = null;
 
+    private Bitmap Ship = null;
+
     // For use to scale the background w respect to the screen size
     private Bitmap scaledbmp = null;
     int ScreenWidth, ScreenHeight;
@@ -43,6 +45,9 @@ public class RenderBackground implements EntityBase
         ScreenHeight = metrics.heightPixels;
 
         scaledbmp = Bitmap.createScaledBitmap(bmp, ScreenWidth, ScreenHeight, true);
+
+        Ship = BitmapFactory.decodeResource(_view.getResources(), R.drawable.ship2_1);
+        Ship = ResourceManager.Instance.GetBitmap(R.drawable.ship2_1);
     }
 
     @Override
@@ -65,13 +70,16 @@ public class RenderBackground implements EntityBase
         _canvas.drawBitmap(scaledbmp, xPos, yPos, null);  // 1st image
         _canvas.drawBitmap(scaledbmp, xPos + ScreenWidth, yPos, null); // 2nd image
 
-        //Matrix transform = new Matrix();
+        Matrix transform = new Matrix();
 
-        //transform.postTranslate (x,y)
-        //transform.postScale (1,1)
+        _canvas.drawBitmap(Ship, transform, null);
 
-        //transform.postRotate((float) Math.toDegrees(30));
-        //_canvas.drawBitmap(ship, transform, null);
+        transform.postTranslate (400, 300);
+        transform.postRotate(30.f);
+        //transform.postScale (1, 1);
+
+        _canvas.drawBitmap(Ship, transform, null);
+
 
     }
 
