@@ -25,7 +25,7 @@ public class MainGameSceneState implements StateBase {
 
         RenderTextEntity.Create();
 
-        Ship.Create();
+        //Ship.Create();
         //ObstacleEntity.Create();
     }
 
