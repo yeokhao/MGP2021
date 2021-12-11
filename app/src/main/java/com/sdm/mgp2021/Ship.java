@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.SurfaceView;
 
 import java.util.Random;
@@ -67,15 +68,18 @@ public class Ship implements EntityBase, Collidable
     @Override
     public void Update(float _dt)
     {
+        if (GameSystem.Instance.GetIsPaused())
+            return;
+
         spriteSmurf.Update(_dt);
         tfx.preRotate(20 * _dt,metrics.widthPixels / 10,metrics.heightPixels / 10);
         tfx.postTranslate(10*_dt,10*_dt);
 
-        lifetime -= _dt;
-        if (lifetime < 0.0f)
-        {
-            SetIsDone(true); // When time is up, kill entity
-        }
+//        lifetime -= _dt;
+//        if (lifetime < 0.0f)
+//        {
+//            SetIsDone(true); // When time is up, kill entity
+//        }
 
         /*
         if (TouchManager.Instance.IsDown())
@@ -99,6 +103,8 @@ public class Ship implements EntityBase, Collidable
                 yPos = TouchManager.Instance.GetPosY();
             }
         }
+
+        //Log.d("xPos", String.valueOf(xPos) + " " + String.valueOf(yPos));
     }
 
     @Override

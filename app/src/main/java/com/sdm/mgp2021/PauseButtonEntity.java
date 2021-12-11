@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.icu.number.Scale;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.SurfaceView;
 
 public class PauseButtonEntity implements EntityBase
@@ -39,8 +40,8 @@ public class PauseButtonEntity implements EntityBase
     @Override
     public void Init(SurfaceView _view)
     {
-        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
-        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pause1);
+        bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pause1);
+        bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
 
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
         ScreenWidth = metrics.widthPixels;
@@ -56,22 +57,21 @@ public class PauseButtonEntity implements EntityBase
     }
 
     @Override
-    public void Update(float _dt)
-    {
+    public void Update(float _dt) {
+
         buttonDelay += _dt;
 
         if (TouchManager.Instance.HasTouch())
         {
             if (TouchManager.Instance.IsDown() && !Paused)
             {
-                // Check collision of button here
                 float imgRadius = ScaledbmpP.getHeight() * 0.5f;
-                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos, yPos, imgRadius))
+                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius) && buttonDelay >= 0.25)
                 {
                     Paused = true;
+                    GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
                 }
                 buttonDelay = 0;
-                GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
             }
         }
         else
@@ -83,7 +83,8 @@ public class PauseButtonEntity implements EntityBase
     @Override
     public void Render(Canvas _canvas)
     {
-        if (Paused == false)
+        float imgRadius = ScaledbmpP.getHeight() * 0.5f;
+        if (TouchManager.Instance.HasTouch() && Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius))
         {
             _canvas.drawBitmap(ScaledbmpP, xPos - ScaledbmpP.getWidth() * 0.5f, yPos - ScaledbmpP.getHeight() * 0.5f, null);
         }
