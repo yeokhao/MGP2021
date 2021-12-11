@@ -6,8 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 
-public class Sprite
-{
+public class Sprite {
     private int row = 0;
     private int col = 0;
     private int width = 0;

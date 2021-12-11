@@ -32,8 +32,13 @@ public class MainGameSceneState implements StateBase {
     }
 
     @Override
-    public void Update(float _dt)
-    {
+    public void Update(float _dt) {
+
+        if (GameSystem.Instance.GetIsPaused())
+        {
+            return;
+        }
+
         EntityManager.Instance.Update(_dt);
 
         if (TouchManager.Instance.IsDown()) {

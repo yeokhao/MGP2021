@@ -16,6 +16,7 @@ public class Ship implements EntityBase, Collidable
 
     private Bitmap bmp = null;
 
+
     int ScreenWidth, ScreenHeight;
     private float xStart, xPos, yPos;
     private float speed = 1;
@@ -54,6 +55,7 @@ public class Ship implements EntityBase, Collidable
         metrics = _view.getResources().getDisplayMetrics();
         ScreenWidth = metrics.widthPixels;
         ScreenHeight = metrics.heightPixels;
+
 
 //        Random ranGen = new Random();
 //        xPos = ranGen.nextFloat() * _view.getWidth();
@@ -162,7 +164,6 @@ public class Ship implements EntityBase, Collidable
     {
         return yPos;
     }
-
     // Optional
     public float GetRadius()
     {

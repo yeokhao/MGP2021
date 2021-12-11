@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.icu.number.Scale;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.SurfaceView;
 
 public class PauseButtonEntity implements EntityBase
@@ -57,14 +56,15 @@ public class PauseButtonEntity implements EntityBase
     }
 
     @Override
-    public void Update(float _dt) {
-
+    public void Update(float _dt)
+    {
         buttonDelay += _dt;
 
         if (TouchManager.Instance.HasTouch())
         {
             if (TouchManager.Instance.IsDown() && !Paused)
             {
+                // Check collision of button here
                 float imgRadius = ScaledbmpP.getHeight() * 0.5f;
                 if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius) && buttonDelay >= 0.25)
                 {
