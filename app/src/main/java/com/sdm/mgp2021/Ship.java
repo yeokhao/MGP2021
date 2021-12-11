@@ -16,6 +16,7 @@ public class Ship implements EntityBase, Collidable
 
     private Bitmap bmp = null;
 
+    public final static Ship Instance = new Ship();
 
     int ScreenWidth, ScreenHeight;
     private float xStart, xPos, yPos;
@@ -94,17 +95,17 @@ public class Ship implements EntityBase, Collidable
         }
         */
 
-        if (TouchManager.Instance.HasTouch()) // Touch and drag
-        {
-            // Check collision with the smurf sprite
-            float imgRadius1 = spriteSmurf.GetWidth() * 0.5f;
-            if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos, yPos, imgRadius1) || hasTouched)
-            {
-                hasTouched = true;
-                xPos = TouchManager.Instance.GetPosX();
-                yPos = TouchManager.Instance.GetPosY();
-            }
-        }
+       //if (TouchManager.Instance.HasTouch()) // Touch and drag
+       //{
+       //    // Check collision with the smurf sprite
+       //    //float imgRadius1 = spriteSmurf.GetWidth() * 0.5f;
+       //    //if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos, yPos, imgRadius1) || hasTouched)
+       //    //{
+       //    //    hasTouched = true;
+       //    //    xPos = TouchManager.Instance.GetPosX();
+       //    //    yPos = TouchManager.Instance.GetPosY();
+       //    //}
+       //}
 
         //Log.d("xPos", String.valueOf(xPos) + " " + String.valueOf(yPos));
     }
@@ -149,7 +150,6 @@ public class Ship implements EntityBase, Collidable
         EntityManager.Instance.AddEntity(result, EntityBase.ENTITY_TYPE.ENT_PLAYER);
         return result;
     }
-
     public String GetType()
     {
         return "";
@@ -170,6 +170,15 @@ public class Ship implements EntityBase, Collidable
         return bmp.getHeight() * 0.5f;
     }
 
+    public void SetPosX(float newXPos)
+    {
+        xPos = newXPos;
+    }
+
+    public void SetPosY(float newYPos)
+    {
+        yPos = newYPos;
+    }
     public void OnHit(Collidable _other)
     {
         if (_other.GetType() == "SampleEntity")
