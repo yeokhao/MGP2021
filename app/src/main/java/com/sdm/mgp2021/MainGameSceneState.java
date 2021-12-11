@@ -24,11 +24,11 @@ public class MainGameSceneState implements StateBase {
         // Example to include another Renderview for Pause Button
 
         RenderTextEntity.Create();
-
         Ship.Create();
+        PauseButtonEntity.Create();
         //ObstacleEntity.Create();
 
-        PauseButtonEntity.Create();
+
     }
 
     @Override
@@ -52,7 +52,6 @@ public class MainGameSceneState implements StateBase {
     public void Render(Canvas _canvas)
     {
         EntityManager.Instance.Render(_canvas);
-
     }
 
     @Override

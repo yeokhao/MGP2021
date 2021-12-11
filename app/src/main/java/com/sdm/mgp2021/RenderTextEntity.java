@@ -1,6 +1,9 @@
 package com.sdm.mgp2021;
 
+// Created by TanSiewLan2020
+
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.SurfaceView;
@@ -13,10 +16,8 @@ public class RenderTextEntity implements EntityBase
     Paint paint = new Paint();
     private  int red = 0, green = 0, blue = 0;
 
-    Typeface myfont;
-
-    private boolean isDone = false;
-    private boolean isInit = false;
+        private boolean isDone = false;
+        private boolean isInit = false;
 
     // Use for loading FPS so need more parameters
     int frameCount;
@@ -24,11 +25,12 @@ public class RenderTextEntity implements EntityBase
     long lastFPSTime = 0;
     float fps;
 
-    @Override
-    public boolean IsDone()
-    {
-        return isDone;
-    }
+        Typeface myfont;
+
+        @Override
+        public boolean IsDone() {
+            return isDone;
+        }
 
     @Override
     public void SetIsDone(boolean _isDone)
@@ -36,30 +38,36 @@ public class RenderTextEntity implements EntityBase
         isDone = _isDone;
     }
 
-    @Override
-    // For us to intialize or load resource eg: images
-    public void Init(SurfaceView _view)
-    {
-        myfont = Typeface.createFromAsset(_view.getContext().getAssets(), "fonts/Gemcut.otf");
-    }
+        @Override
+        public void Init(SurfaceView _view) {
 
-    @Override
-    public void Update(float _dt)
-    {
-        // Get actual FPS
-        frameCount++;
+            // Week 8 Use my own fonts
+            myfont = Typeface.createFromAsset(_view.getContext().getAssets(), "fonts/Gemcut.otf");
+           // myfont = Typeface.create(Typeface.DEFAULT, Typeface.NORMAL);
+            isInit = true;
 
-        long currentTime = System.currentTimeMillis();
-
-        lastTime = currentTime;
-
-        if (currentTime - lastFPSTime > 1000)
-        {
-            fps = (frameCount * 1000.f) / (currentTime - lastFPSTime);
-            lastFPSTime = currentTime;
-            frameCount = 0;
         }
-    }
+
+        @Override
+        public void Update(float _dt) {
+
+            // get actual fps
+
+            frameCount++;
+
+            long currentTime = System.currentTimeMillis();
+
+            lastTime = currentTime;
+
+            if(currentTime - lastFPSTime > 1000)
+            {
+                fps = (frameCount * 1000.f) / (currentTime - lastFPSTime);
+                lastFPSTime = currentTime;
+                frameCount = 0;
+            }
+
+
+        }
 
     @Override
     public void Render(Canvas _canvas)
@@ -112,14 +120,5 @@ public void Init(SurfaceView _view)
     // Option 1
     // Make this entity deadable/ destroy - respawn all the time.
 
-    // Option 2
-    // Make this object IMMORTAL. Loop it all again and again.
-
-    // Randomize a location to spawn on screen
-    Random ranGen = new Random();
-    xStart = xPos = _view.getWidth();
-    ScreenHeight = _view.getHeight();
-    yPos = ranGen.nextInt();
 }
 */
-

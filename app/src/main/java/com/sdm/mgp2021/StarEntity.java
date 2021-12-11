@@ -83,8 +83,9 @@ public class StarEntity implements EntityBase, Collidable{
     }
 
     @Override
-    public int GetRenderLayer() {
-        return LayerConstants.STAR_LAYER;
+    public int GetRenderLayer()
+    {
+        return LayerConstants.SHIP_LAYER;
     }
 
     @Override
