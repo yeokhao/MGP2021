@@ -72,13 +72,13 @@ public class RenderBackground implements EntityBase
 
         Matrix transform = new Matrix();
 
-        _canvas.drawBitmap(Ship, transform, null);
+        //_canvas.drawBitmap(Ship, transform, null);
 
         transform.postTranslate (400, 300);
         transform.postRotate(30.f);
         //transform.postScale (1, 1);
 
-        _canvas.drawBitmap(Ship, transform, null);
+        //_canvas.drawBitmap(Ship, transform, null);
 
 
     }

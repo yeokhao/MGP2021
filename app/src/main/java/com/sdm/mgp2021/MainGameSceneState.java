@@ -25,19 +25,26 @@ public class MainGameSceneState implements StateBase {
 
         RenderTextEntity.Create();
 
-        //Ship.Create();
+        Ship.Create();
         //ObstacleEntity.Create();
+
+        PauseButtonEntity.Create();
     }
 
     @Override
     public void Update(float _dt) {
+
+        if (GameSystem.Instance.GetIsPaused())
+        {
+            return;
+        }
 
         EntityManager.Instance.Update(_dt);
 
         if (TouchManager.Instance.IsDown()) {
 			
             //Example of touch on screen in the main game to trigger back to Main menu
-            StateManager.Instance.ChangeState("Mainmenu");
+            //StateManager.Instance.ChangeState("Mainmenu");
         }
     }
 

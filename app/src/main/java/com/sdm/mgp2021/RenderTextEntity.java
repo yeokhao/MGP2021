@@ -5,17 +5,18 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.SurfaceView;
 
-import androidx.constraintlayout.helper.widget.Layer;
+//import android.constraintlayout.helper.widget.Layer;
 
 public class RenderTextEntity implements EntityBase
 {
-    private boolean isDone = false;
-
     // Paint
     Paint paint = new Paint();
     private  int red = 0, green = 0, blue = 0;
 
     Typeface myfont;
+
+    private boolean isDone = false;
+    private boolean isInit = false;
 
     // Use for loading FPS so need more parameters
     int frameCount;
