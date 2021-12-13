@@ -157,7 +157,7 @@ public class Ship implements EntityBase, Collidable
                     moveUp = true;
 
                 }
-                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, downButtonXpos, downButtonYpos, imgRadius) && buttonDelay >= 0)
+                else if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, downButtonXpos, downButtonYpos, imgRadius) && buttonDelay >= 0)
                 {
                     moveDown = true;
                 }
@@ -185,8 +185,8 @@ public class Ship implements EntityBase, Collidable
         spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
         _canvas.drawBitmap(bmp, xPos, yPos, null);
-        _canvas.drawBitmap(scaledUpButton, upButtonXpos, upButtonYpos, null);
-        _canvas.drawBitmap(scaledDownButton, downButtonXpos, downButtonYpos, null);
+        _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);
+        _canvas.drawBitmap(scaledDownButton, downButtonXpos - scaledDownButton.getWidth() * 0.5f, downButtonYpos - scaledDownButton.getHeight() * 0.5f, null);
 
 //        Matrix transform = new Matrix();
 //        transform.postScale((0.5f + Math.abs((float)Math.sin(lifetime))), (0.5f + Math.abs((float)Math.sin(lifetime))));
@@ -254,7 +254,7 @@ public class Ship implements EntityBase, Collidable
     {
         if (_other.GetType() == "Obstacle")
         {
-            SetIsDone(true);
+            //SetIsDone(true);
         }
     }
 }
