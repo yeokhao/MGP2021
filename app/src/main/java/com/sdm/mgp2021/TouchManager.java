@@ -16,7 +16,8 @@ public class TouchManager {
     public enum TouchState{
         NONE,
         DOWN,
-        MOVE
+        MOVE,
+        UP
     }
 
     private int posX, posY;
@@ -28,6 +29,11 @@ public class TouchManager {
 
     public boolean IsDown(){
         return status == TouchState.DOWN;
+    }
+
+    public boolean IsUp()
+    {
+        return status == TouchState.UP;
     }
 
     public int GetPosX(){
@@ -52,7 +58,7 @@ public class TouchManager {
                 break;
 
             case MotionEvent.ACTION_UP:
-                status = TouchState.NONE;
+                status = TouchState.UP;
                 break;
         }
     }

@@ -85,12 +85,12 @@ public class ObstacleEntity implements EntityBase, Collidable
         //}
 
         xPos -= speed * _dt;
-        Log.d("obsUpdate", String.valueOf(xPos) + " " + String.valueOf(speed));
+        //Log.d("obsUpdate", String.valueOf(xPos) + " " + String.valueOf(speed));
 
         // Check if we are out of the screen
         if (xPos <= -bmp.getWidth() * 0.5f)
         {
-            Log.d("offscreen", "Obstacle went offscreen");
+            //Log.d("offscreen", "Obstacle went offscreen");
             // Move it to another location
             xPos = xStart;
             Random ranGen = new Random();
