@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.text.method.Touch;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -14,9 +16,10 @@ import java.util.Random;
 public class Ship implements EntityBase, Collidable
 {
     private boolean isDone = false;
-
+    Paint paint = new Paint();
     private Bitmap bmp = null;
-
+    private  int red = 0, green = 255, blue = 0;
+    Typeface myfont;
     public final static Ship Instance = new Ship();
 
     int ScreenWidth, ScreenHeight;
@@ -32,6 +35,8 @@ public class Ship implements EntityBase, Collidable
     private boolean hasTouched = false;
 
     private Bitmap upButton,downButton, scaledUpButton,scaledDownButton = null;
+
+    public float score;
 
     private float buttonDelay = 0;
     private boolean moveUp, moveDown;
@@ -52,6 +57,7 @@ public class Ship implements EntityBase, Collidable
     // For us to intialize or load resource eg: images
     public void Init(SurfaceView _view)
     {
+        myfont = Typeface.createFromAsset(_view.getContext().getAssets(), "fonts/Gemcut.otf");
         bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.gameship);
 
         spriteSmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite), 4, 4, 16);
@@ -184,6 +190,12 @@ public class Ship implements EntityBase, Collidable
     {
         //spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
+
+        paint.setARGB(255, red, green, blue);
+        paint.setStrokeWidth(200);
+        paint.setTypeface(myfont);
+        paint.setTextSize(70);
+        _canvas.drawText("Score:" + score, 30, 120, paint);
         _canvas.drawBitmap(bmp, xPos, yPos, null);
         _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);
         _canvas.drawBitmap(scaledDownButton, downButtonXpos - scaledDownButton.getWidth() * 0.5f, downButtonYpos - scaledDownButton.getHeight() * 0.5f, null);
@@ -255,6 +267,7 @@ public class Ship implements EntityBase, Collidable
         if (_other.GetType() == "Obstacle")
         {
             //SetIsDone(true);
+            score ++;
         }
     }
 }

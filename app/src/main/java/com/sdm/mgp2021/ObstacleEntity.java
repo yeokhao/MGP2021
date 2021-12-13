@@ -23,7 +23,7 @@ public class ObstacleEntity implements EntityBase, Collidable
     private float xStart, xPos, yPos;
     private int path;
     private float speed = 1;
-
+    private float obstacleSpeed = 1;
     //private SurfaceView view = null;
     //Matrix tfx = new Matrix();
     DisplayMetrics metrics;
@@ -75,6 +75,11 @@ public class ObstacleEntity implements EntityBase, Collidable
     @Override
     public void Update(float _dt)
     {
+        obstacleSpeed += 0.00001* _dt;
+        if (obstacleSpeed >=5 )
+        {
+            obstacleSpeed =5;
+        }
         if (GameSystem.Instance.GetIsPaused())
             return;
 
@@ -84,7 +89,7 @@ public class ObstacleEntity implements EntityBase, Collidable
         //return;
         //}
 
-        xPos -= speed * _dt;
+        xPos -= speed * _dt * obstacleSpeed;
         //Log.d("obsUpdate", String.valueOf(xPos) + " " + String.valueOf(speed));
 
         // Check if we are out of the screen
@@ -166,8 +171,11 @@ public class ObstacleEntity implements EntityBase, Collidable
 
     public void OnHit(Collidable _other)
     {
-        if (_other.GetType() == "SampleEntity")
+        if (_other.GetType() == "Ship")
         {
+            xPos= xStart;
+            Random ranGen = new Random();
+            yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
             //SetIsDone(true);
         }
     }
