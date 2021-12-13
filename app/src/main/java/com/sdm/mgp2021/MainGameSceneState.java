@@ -29,8 +29,6 @@ public class MainGameSceneState implements StateBase {
         ObstacleEntity.Create();
 
         PauseButtonEntity.Create();
-
-        JumpButton.Create();
     }
 
     @Override

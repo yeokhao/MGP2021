@@ -145,7 +145,7 @@ public class ObstacleEntity implements EntityBase, Collidable
 
     public String GetType()
     {
-        return "";
+        return "Obstacle";
     }
 
     public float GetPosX()

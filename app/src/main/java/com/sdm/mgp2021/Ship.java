@@ -223,7 +223,7 @@ public class Ship implements EntityBase, Collidable
     }
     public String GetType()
     {
-        return "";
+        return "Ship";
     }
 
     public float GetPosX()
@@ -252,9 +252,9 @@ public class Ship implements EntityBase, Collidable
     }
     public void OnHit(Collidable _other)
     {
-        if (_other.GetType() == "SampleEntity")
+        if (_other.GetType() == "Obstacle")
         {
-            //SetIsDone(true);
+            SetIsDone(true);
         }
     }
 }
