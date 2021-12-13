@@ -52,7 +52,7 @@ public class Ship implements EntityBase, Collidable
     // For us to intialize or load resource eg: images
     public void Init(SurfaceView _view)
     {
-        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.ship2_1);
+        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.gameship);
 
         spriteSmurf = new Sprite(ResourceManager.Instance.GetBitmap(R.drawable.smurf_sprite), 4, 4, 16);
 
@@ -61,8 +61,8 @@ public class Ship implements EntityBase, Collidable
         ScreenWidth = metrics.widthPixels;
         ScreenHeight = metrics.heightPixels;
 
-        upButton =  ResourceManager.Instance.GetBitmap(R.drawable.pause);
-        downButton =  ResourceManager.Instance.GetBitmap(R.drawable.pause1);
+        upButton =  ResourceManager.Instance.GetBitmap(R.drawable.upbutton);
+        downButton =  ResourceManager.Instance.GetBitmap(R.drawable.downbutton);
 
         scaledUpButton = Bitmap.createScaledBitmap(upButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
         scaledDownButton = Bitmap.createScaledBitmap(downButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
@@ -182,7 +182,7 @@ public class Ship implements EntityBase, Collidable
     @Override
     public void Render(Canvas _canvas)
     {
-        spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
+        //spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
         _canvas.drawBitmap(bmp, xPos, yPos, null);
         _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);

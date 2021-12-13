@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/stonk">
+    android:background="@drawable/options">
 
     <Button
         android:id="@+id/btn_options_back"
@@ -13,9 +13,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="340dp"
         android:layout_marginRight="540dp"
-        android:background="@drawable/button"
+        android:background="@drawable/buttonframe"
         android:text="Back"
-        android:textColor="#FF0000"
+        android:textColor="#00FF00"
         android:textSize="18dp" />
 
 </RelativeLayout>

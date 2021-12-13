@@ -11,7 +11,7 @@ public class RenderTextEntity implements EntityBase
 {
     // Paint
     Paint paint = new Paint();
-    private  int red = 0, green = 0, blue = 0;
+    private  int red = 0, green = 255, blue = 0;
 
     Typeface myfont;
 
@@ -67,7 +67,7 @@ public class RenderTextEntity implements EntityBase
     @Override
     public void Render(Canvas _canvas)
     {
-        paint.setARGB(255, 0, 0, 0);
+        paint.setARGB(255, red, green, blue);
         paint.setStrokeWidth(200);
         paint.setTypeface(myfont);
         paint.setTextSize(70);

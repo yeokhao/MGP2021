@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/stonk">
+    android:background="@drawable/backgnd">
 
     <Button
         android:id="@+id/btn_start"
@@ -13,11 +13,10 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="136dp"
         android:layout_marginRight="304dp"
-        android:background="@drawable/button"
+        android:background="@drawable/buttonframe"
         android:text="Start"
-        android:textColor="#FF0000"
-        android:textSize="18dp"
-    />
+        android:textColor="#00FF00"
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/btn_back"
@@ -27,9 +26,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="230dp"
         android:layout_marginRight="304dp"
-        android:background="@drawable/button"
+        android:background="@drawable/buttonframe"
         android:text="Back"
-        android:textColor="#FF0000"
+        android:textColor="#00FF00"
         android:textSize="18dp" />
 
     <Button
@@ -40,9 +39,9 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="340dp"
         android:layout_marginRight="540dp"
-        android:background="@drawable/button"
+        android:background="@drawable/buttonframe"
         android:text="Options"
-        android:textColor="#FF0000"
+        android:textColor="#00FF00"
         android:textSize="18dp" />
 
 </RelativeLayout>
