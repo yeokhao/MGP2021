@@ -1,5 +1,6 @@
 package com.sdm.mgp2021;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,6 +12,11 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.SurfaceView;
 
+//import android.hardware.Sensor;
+//import android.hardware.SensorEvent;
+//import android.hardware.SensorEventListener;
+//import android.hardware.SensorManager;
+
 import java.util.Random;
 
 public class Ship implements EntityBase, Collidable
@@ -20,6 +26,7 @@ public class Ship implements EntityBase, Collidable
     private Bitmap bmp = null;
     private  int red = 0, green = 255, blue = 0;
     Typeface myfont;
+    //SensorManager sensor;
     public final static Ship Instance = new Ship();
 
     int ScreenWidth, ScreenHeight;
@@ -57,6 +64,9 @@ public class Ship implements EntityBase, Collidable
     // For us to intialize or load resource eg: images
     public void Init(SurfaceView _view)
     {
+        //sensor = (SensorManager) _view.getContext().getSystemService(Context.SENSOR_SERVICE);
+        //sensor.registerListener(this, sensor.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0), SensorManager.SENSOR_DELAY_NORMAL);
+
         myfont = Typeface.createFromAsset(_view.getContext().getAssets(), "fonts/Gemcut.otf");
         bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.gameship);
 
@@ -183,6 +193,19 @@ public class Ship implements EntityBase, Collidable
             moveUp = false;
             moveDown = false;
         }
+
+        if (score >= 5)
+        {
+            SetIsDone(true);
+
+            int currScore = GameSystem.Instance.GetIntFromSave("Score");
+            ++currScore;
+            GameSystem.Instance.SaveEditBegin();
+            GameSystem.Instance.SetIntInSave("Score", currScore);
+            GameSystem.Instance.SaveEditEnd();
+
+            //StateManager.Instance.ChangeState("Mainmenu");
+        }
     }
 
     @Override
@@ -228,6 +251,7 @@ public class Ship implements EntityBase, Collidable
         return EntityBase.ENTITY_TYPE.ENT_PLAYER;
     }
 
+
     public static Ship Create(){
         Ship result = new Ship();
         EntityManager.Instance.AddEntity(result, EntityBase.ENTITY_TYPE.ENT_PLAYER);
@@ -262,6 +286,7 @@ public class Ship implements EntityBase, Collidable
     {
         yPos = newYPos;
     }
+
     public void OnHit(Collidable _other)
     {
         if (_other.GetType() == "Obstacle")

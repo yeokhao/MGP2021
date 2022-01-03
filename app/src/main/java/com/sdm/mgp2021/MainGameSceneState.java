@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.view.SurfaceView;
 
 // Created by TanSiewLan2021
@@ -48,6 +49,14 @@ public class MainGameSceneState implements StateBase {
     {
         EntityManager.Instance.Render(_canvas);
 
+        String scoreText = String.format("SCORE : &d", GameSystem.Instance.GetIntFromSave("Score"));
+
+        Paint paint = new Paint();
+        paint.setColor(Color.GREEN);
+        paint.setTextSize(64);
+        paint.setTypeface(Typeface.MONOSPACE);
+
+        _canvas.drawText(scoreText, 10, 220, paint);
     }
 
     @Override
