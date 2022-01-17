@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Debug;
 import android.text.method.Touch;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -159,7 +160,7 @@ public class Ship implements EntityBase, Collidable
                 yPos += 10;
             }
         }
-        Log.d("yPos", String.valueOf(yPos));
+        //Log.d("yPos", String.valueOf(yPos));
 
         buttonDelay += _dt;
 
@@ -196,7 +197,7 @@ public class Ship implements EntityBase, Collidable
 
         if (score >= 5)
         {
-            SetIsDone(true);
+            //SetIsDone(true);
 
             int currScore = GameSystem.Instance.GetIntFromSave("Score");
             ++currScore;
@@ -291,8 +292,15 @@ public class Ship implements EntityBase, Collidable
     {
         if (_other.GetType() == "Obstacle")
         {
+            if (true)
+            {
+                score++;
+            }
+            else
+            {
+                score--;
+            }
             //SetIsDone(true);
-            score ++;
         }
     }
 }

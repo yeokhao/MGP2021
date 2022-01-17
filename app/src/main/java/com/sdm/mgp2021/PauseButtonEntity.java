@@ -15,8 +15,13 @@ public class PauseButtonEntity implements EntityBase
     private Bitmap ScaledbmpP = null;
     private Bitmap ScaledbmpUP = null;
 
-    private float xPos = 0;
-    private float yPos = 0;
+    private Bitmap bmpExit = null;
+    private Bitmap ScaledbmpExit = null;
+
+    private float PausexPos = 0;
+    private float PauseyPos = 0;
+    private float ExitxPos = 0;
+    private float ExityPos = 0;
 
     private boolean isDone = false;
     private boolean isInit = false;
@@ -41,6 +46,7 @@ public class PauseButtonEntity implements EntityBase
     {
         bmpP = ResourceManager.Instance.GetBitmap(R.drawable.pause1);
         bmpUP = ResourceManager.Instance.GetBitmap(R.drawable.pause);
+        bmpExit = ResourceManager.Instance.GetBitmap(R.drawable.exit);
 
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
         ScreenWidth = metrics.widthPixels;
@@ -48,9 +54,13 @@ public class PauseButtonEntity implements EntityBase
 
         ScaledbmpP = Bitmap.createScaledBitmap(bmpP, (int) (ScreenWidth) / 12, (int) (ScreenHeight) / 7, true);
         ScaledbmpUP = Bitmap.createScaledBitmap(bmpUP, (int) (ScreenWidth) / 12, (int) (ScreenHeight) / 7, true);
+        ScaledbmpExit = Bitmap.createScaledBitmap(bmpExit, (int) (ScreenWidth) / 12, (int) (ScreenHeight) / 7, true);
 
-        xPos = ScreenWidth - 150;
-        yPos = 150;
+        PausexPos = ScreenWidth - 150;
+        PauseyPos = 150;
+
+        ExitxPos = ScreenWidth - 300;
+        ExityPos = 150;
 
         isInit = true;
     }
@@ -66,8 +76,10 @@ public class PauseButtonEntity implements EntityBase
             {
                 // Check collision of button here
                 float imgRadius = ScaledbmpP.getHeight() * 0.5f;
-                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius) && buttonDelay >= 0.25)
+                if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, PausexPos, PauseyPos, imgRadius) && buttonDelay >= 0.25)
                 {
+                    AudioManager.Instance.PlayAudio(R.raw.select, 1.0f);
+
                     Paused = true;
 
                     if (PauseConfirmDialogFragment.isShown)
@@ -79,6 +91,10 @@ public class PauseButtonEntity implements EntityBase
                     newPauseConfirm.show(GamePage.Instance.getSupportFragmentManager(), "PauseConfirm");
 
                     //GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
+                }
+                else if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, ExitxPos, ExityPos, imgRadius) && buttonDelay >= 0.25)
+                {
+                    StateManager.Instance.ChangeState("Mainmenu");
                 }
                 buttonDelay = 0;
             }
@@ -93,14 +109,16 @@ public class PauseButtonEntity implements EntityBase
     public void Render(Canvas _canvas)
     {
         float imgRadius = ScaledbmpP.getHeight() * 0.5f;
-        if (TouchManager.Instance.HasTouch() && Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, xPos,yPos, imgRadius))
+        if (TouchManager.Instance.HasTouch() && Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, PausexPos, PauseyPos, imgRadius))
         {
-            _canvas.drawBitmap(ScaledbmpP, xPos - ScaledbmpP.getWidth() * 0.5f, yPos - ScaledbmpP.getHeight() * 0.5f, null);
+            _canvas.drawBitmap(ScaledbmpP, PausexPos - ScaledbmpP.getWidth() * 0.5f, PauseyPos - ScaledbmpP.getHeight() * 0.5f, null);
         }
         else
         {
-            _canvas.drawBitmap(ScaledbmpUP, xPos - ScaledbmpUP.getWidth() * 0.5f, yPos - ScaledbmpUP.getHeight() * 0.5f, null);
+            _canvas.drawBitmap(ScaledbmpUP, PausexPos - ScaledbmpUP.getWidth() * 0.5f, PauseyPos - ScaledbmpUP.getHeight() * 0.5f, null);
         }
+
+        _canvas.drawBitmap(ScaledbmpExit, ExitxPos - ScaledbmpExit.getWidth() * 0.5f, ExityPos - ScaledbmpExit.getHeight() * 0.5f, null);
 
     }
 

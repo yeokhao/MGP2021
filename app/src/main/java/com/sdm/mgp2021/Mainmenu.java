@@ -58,6 +58,8 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         //If start button is clicked, we go to Splash page.
         //If back button is clicked, we go to main menu.
 
+        //AudioManager.Instance.PlayAudio(R.raw.select, 0.9f);
+
         Intent intent = new Intent();
 
         if (v == btn_start)

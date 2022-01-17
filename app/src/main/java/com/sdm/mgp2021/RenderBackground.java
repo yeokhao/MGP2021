@@ -4,8 +4,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.text.method.Touch;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.SurfaceView;
+
+import androidx.core.content.ContextCompat;
 
 public class RenderBackground implements EntityBase
 {
@@ -20,6 +24,11 @@ public class RenderBackground implements EntityBase
 
     private float xPos, yPos, offset;
     private SurfaceView view = null;
+
+    int[] bg_images = new int[]{R.drawable.scrollbg, R.drawable.gamescene, R.drawable.backgnd};
+    int bg_img_index = 0;
+
+    float zoneTime = 10.0f;
 
     // Check if anything that we want to do with the entity is done. (use for pause)
     @Override
@@ -37,7 +46,9 @@ public class RenderBackground implements EntityBase
     @Override
     public void Init(SurfaceView _view)
     {
-        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.scrollbg);
+        view = _view;
+
+        bmp = BitmapFactory.decodeResource(_view.getResources(), bg_images[bg_img_index]);
 
         // Find the surfaceview size or the screen size.
         DisplayMetrics metrics = _view.getResources().getDisplayMetrics();
@@ -63,6 +74,23 @@ public class RenderBackground implements EntityBase
             xPos = 0;
         }
 
+        zoneTime -= _dt;
+        if (zoneTime <= 0.0f)
+        {
+            bg_img_index++;
+
+            if (bg_img_index >= bg_images.length)
+            {
+                bg_img_index = 0;
+            }
+
+            bmp = BitmapFactory.decodeResource(view.getResources(), bg_images[bg_img_index]);
+            scaledbmp = Bitmap.createScaledBitmap(bmp, ScreenWidth, ScreenHeight, true);
+
+            zoneTime = 10.0f;
+        }
+
+        Log.d("tag", Integer.toString(GetBackgroundIndex()));
     }
 
     @Override
@@ -108,6 +136,11 @@ public class RenderBackground implements EntityBase
         RenderBackground result = new RenderBackground();
         EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
         return result;
+    }
+
+    public int GetBackgroundIndex()
+    {
+        return bg_img_index;
     }
 
     @Override

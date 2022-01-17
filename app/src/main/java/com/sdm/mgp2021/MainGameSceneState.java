@@ -37,8 +37,8 @@ public class MainGameSceneState implements StateBase {
     {
         EntityManager.Instance.Update(_dt);
 
-        if (TouchManager.Instance.IsDown()) {
-			
+        if (TouchManager.Instance.IsDown())
+        {
             //Example of touch on screen in the main game to trigger back to Main menu
             //StateManager.Instance.ChangeState("Mainmenu");
         }
@@ -49,14 +49,14 @@ public class MainGameSceneState implements StateBase {
     {
         EntityManager.Instance.Render(_canvas);
 
-        String scoreText = String.format("SCORE : &d", GameSystem.Instance.GetIntFromSave("Score"));
-
-        Paint paint = new Paint();
-        paint.setColor(Color.GREEN);
-        paint.setTextSize(64);
-        paint.setTypeface(Typeface.MONOSPACE);
-
-        _canvas.drawText(scoreText, 10, 220, paint);
+//        String scoreText = String.format("SCORE : &d", GameSystem.Instance.GetIntFromSave("Score"));
+//
+//        Paint paint = new Paint();
+//        paint.setColor(Color.GREEN);
+//        paint.setTextSize(64);
+//        paint.setTypeface(Typeface.MONOSPACE);
+//
+//        _canvas.drawText(scoreText, 10, 220, paint);
     }
 
     @Override
