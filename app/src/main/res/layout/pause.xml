@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/options">
+
+    <Button
+        android:id="@+id/btn_back"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="169dp"
+        android:layout_marginRight="291dp"
+        android:background="@drawable/buttonframe"
+        android:text="Back"
+        android:textColor="#00FF00"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btn_mainMenu"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="261dp"
+        android:layout_marginRight="291dp"
+        android:background="@drawable/buttonframe"
+        android:text="MainMenu"
+        android:textColor="#00FF00"
+        android:textSize="18dp" />
+
+
+</RelativeLayout>

@@ -1,5 +1,6 @@
 package com.sdm.mgp2021;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
@@ -88,13 +89,16 @@ public class PauseButtonEntity implements EntityBase
                     }
 
                     PauseConfirmDialogFragment newPauseConfirm = new PauseConfirmDialogFragment();
-                    newPauseConfirm.show(GamePage.Instance.getSupportFragmentManager(), "PauseConfirm");
+                    //GamePage.Instance.setToPause();
+                    newPauseConfirm.show(GamePage.Instance.getFragmentManager() , "PauseConfirm");
 
                     //GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
                 }
                 else if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, ExitxPos, ExityPos, imgRadius) && buttonDelay >= 0.25)
                 {
                     StateManager.Instance.ChangeState("Mainmenu");
+
+                    GameSystem.Instance.SetIsPaused(!GameSystem.Instance.GetIsPaused());
                 }
                 buttonDelay = 0;
             }

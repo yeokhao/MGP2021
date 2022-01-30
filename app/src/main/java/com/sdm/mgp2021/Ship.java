@@ -26,6 +26,7 @@ public class Ship implements EntityBase, Collidable
     Paint paint = new Paint();
     private Bitmap bmp = null;
     private  int red = 0, green = 255, blue = 0;
+    private int highestScore,tempScore;
     Typeface myfont;
     //SensorManager sensor;
     public final static Ship Instance = new Ship();
@@ -204,8 +205,8 @@ public class Ship implements EntityBase, Collidable
             GameSystem.Instance.SaveEditBegin();
             GameSystem.Instance.SetIntInSave("Score", currScore);
             GameSystem.Instance.SaveEditEnd();
-
-            StateManager.Instance.ChangeState("Endscreen");
+            GamePage.Instance.SetToEnd();
+            //StateManager.Instance.ChangeState("Endscreen");
         }
     }
 
@@ -258,6 +259,7 @@ public class Ship implements EntityBase, Collidable
         EntityManager.Instance.AddEntity(result, EntityBase.ENTITY_TYPE.ENT_PLAYER);
         return result;
     }
+
     public String GetType()
     {
         return "Ship";
