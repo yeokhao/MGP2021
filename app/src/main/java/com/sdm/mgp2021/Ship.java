@@ -46,7 +46,7 @@ public class Ship implements EntityBase, Collidable
     private Bitmap upButton,downButton, scaledUpButton,scaledDownButton = null;
 
     public float score;
-
+    int currScore;
     private float buttonDelay = 0;
     private boolean moveUp, moveDown;
 
@@ -85,7 +85,8 @@ public class Ship implements EntityBase, Collidable
         scaledUpButton = Bitmap.createScaledBitmap(upButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
         scaledDownButton = Bitmap.createScaledBitmap(downButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
 
-
+        currScore = GameSystem.Instance.GetIntFromSave("Score");
+        currScore = 0;
 //        Random ranGen = new Random();
 //        xPos = ranGen.nextFloat() * _view.getWidth();
 //        yPos = ranGen.nextFloat() * _view.getHeight();
@@ -196,15 +197,9 @@ public class Ship implements EntityBase, Collidable
             moveDown = false;
         }
 
-        if (score >= 5)
+        if (currScore >= 5)
         {
             //SetIsDone(true);
-
-            int currScore = GameSystem.Instance.GetIntFromSave("Score");
-            ++currScore;
-            GameSystem.Instance.SaveEditBegin();
-            GameSystem.Instance.SetIntInSave("Score", currScore);
-            GameSystem.Instance.SaveEditEnd();
             GamePage.Instance.SetToEnd();
             //StateManager.Instance.ChangeState("Endscreen");
         }
@@ -215,12 +210,12 @@ public class Ship implements EntityBase, Collidable
     {
         //spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
-
+        String scoreText = String.format("Score:%d",GameSystem.Instance.GetIntFromSave("Score"));
         paint.setARGB(255, red, green, blue);
         paint.setStrokeWidth(200);
         paint.setTypeface(myfont);
         paint.setTextSize(70);
-        _canvas.drawText("Score:" + score, 30, 120, paint);
+        _canvas.drawText(scoreText, 30, 120, paint);
         _canvas.drawBitmap(bmp, xPos, yPos, null);
         _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);
         _canvas.drawBitmap(scaledDownButton, downButtonXpos - scaledDownButton.getWidth() * 0.5f, downButtonYpos - scaledDownButton.getHeight() * 0.5f, null);
@@ -296,7 +291,10 @@ public class Ship implements EntityBase, Collidable
         {
             if (true)
             {
-                score++;
+                currScore++;
+                GameSystem.Instance.SaveEditBegin();
+                GameSystem.Instance.SetIntInSave("Score", currScore);
+                GameSystem.Instance.SaveEditEnd();
             }
             else
             {
