@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/blankbg">
+
+    <Button
+        android:id="@+id/btn_retry"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="170dp"
+        android:layout_marginRight="304dp"
+        android:background="@drawable/buttonframe"
+        android:text="Retry"
+        android:textColor="#00FF00"
+        android:textSize="18dp"
+        />
+
+    <Button
+        android:id="@+id/btn_exit"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="304dp"
+        android:background="@drawable/buttonframe"
+        android:text="Menu"
+        android:textColor="#00FF00"
+        android:textSize="18dp"
+        />
+
+
+</RelativeLayout>

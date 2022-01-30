@@ -205,7 +205,7 @@ public class Ship implements EntityBase, Collidable
             GameSystem.Instance.SetIntInSave("Score", currScore);
             GameSystem.Instance.SaveEditEnd();
 
-            //StateManager.Instance.ChangeState("Mainmenu");
+            StateManager.Instance.ChangeState("Endscreen");
         }
     }
 
