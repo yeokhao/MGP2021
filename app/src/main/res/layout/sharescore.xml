@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@drawable/options">
+
+    <Button
+        android:id="@+id/btn_options_back"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="310dp"
+        android:layout_marginRight="540dp"
+        android:background="@drawable/buttonframe"
+        android:text="Back"
+        android:textColor="#00FF00"
+        android:textSize="18dp" />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fb_login_button"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp" />
+
+    <com.facebook.login.widget.ProfilePictureView
+        android:id="@+id/picture"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_above="@+id/btn_sharescore"
+        android:layout_gravity="center"
+        android:layout_marginEnd="-400dp"
+        android:layout_marginBottom="-200dp"
+        android:layout_toStartOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/btn_sharescore"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginLeft="275dp"
+        android:background="@drawable/buttonframe"
+        android:text="Send Score"
+        android:textColor="#00FF00"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="200dp"
+        android:textColor="#00FF00"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:text="Thank You for playing our MGP Assignment!" />
+
+    <TextView
+        android:id="@+id/scoreText"
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="150dp"
+        android:textColor="#00FF00"
+        android:textSize="17dp" />
+
+</RelativeLayout>

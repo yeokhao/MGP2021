@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.SurfaceView;
 
+import com.facebook.share.Share;
+
 // Created by TanSiewLan2021
 
 public class GameSystem {
@@ -34,6 +36,7 @@ public class GameSystem {
         StateManager.Instance.AddState(new MainGameSceneState());
         StateManager.Instance.AddState(new Endscreen());
         StateManager.Instance.AddState(new LoseScreen());
+        StateManager.Instance.AddState(new ShareScore());
     }
 
     public void SetIsPaused(boolean _newIsPaused)

@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.sdm.mgp2021">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <meta-data android:name="com.facebook.sdk.ApplicationId"
+        android:value = "@string/facebook_app_id"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MGP2021">
+
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider471296094664281"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
+
 
         <activity
             android:name=".Splashpage"
@@ -44,7 +55,7 @@
         </activity>
 
         <activity
-            android:name=".Options"
+            android:name=".ShareScore"
             android:exported="true"
             android:screenOrientation="landscape">
             <intent-filter>

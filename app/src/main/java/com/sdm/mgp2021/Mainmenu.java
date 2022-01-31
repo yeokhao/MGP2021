@@ -19,7 +19,7 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
     // Define buttons. We have 2 buttons (Start, Back)
     private Button btn_start;
     private Button btn_back;
-    private Button btn_options;
+    private Button btn_goto_sharescore;
 
     @Override
     protected void onCreate (Bundle saveInstanceState){
@@ -39,8 +39,8 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         btn_back = (Button)findViewById(R.id.btn_back);
         btn_back.setOnClickListener(this);  // Set Listener to this button --> Back Button
 
-        btn_options = (Button)findViewById(R.id.btn_options);
-        btn_options.setOnClickListener(this);  // Set Listener to this button --> Options Button
+        btn_goto_sharescore = (Button)findViewById(R.id.btn_goto_sharescore);
+        btn_goto_sharescore.setOnClickListener(this);  // Set Listener to this button --> Options Button
 
         StateManager.Instance.AddState(new Mainmenu());
     }
@@ -73,10 +73,10 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         {
             intent.setClass(this, Mainmenu.class);
         }
-        else if (v == btn_options)
+        else if (v == btn_goto_sharescore)
         {
-            intent.setClass(this, Options.class);
-            StateManager.Instance.ChangeState("Options");
+            intent.setClass(this, ShareScore.class);
+            StateManager.Instance.ChangeState("ShareScore");
         }
 
         startActivity(intent);

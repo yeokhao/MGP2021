@@ -32,16 +32,14 @@
         android:textSize="18dp" />
 
     <Button
-        android:id="@+id/btn_options"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:id="@+id/btn_goto_sharescore"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="340dp"
-        android:layout_marginRight="540dp"
-        android:background="@drawable/buttonframe"
-        android:text="Options"
-        android:textColor="#00FF00"
+        android:layout_marginTop="320dp"
+        android:layout_marginRight="640dp"
+        android:background="@drawable/pause"
         android:textSize="18dp" />
 
 </RelativeLayout>
