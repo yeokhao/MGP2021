@@ -9,7 +9,7 @@ import android.view.SurfaceView;
 
 import java.util.Random;
 
-public class ObstacleEntity2 implements EntityBase, Collidable
+public class LifePickup implements EntityBase, Collidable
 {
     private boolean isDone = false;
 
@@ -41,7 +41,7 @@ public class ObstacleEntity2 implements EntityBase, Collidable
     // For us to intialize or load resource eg: images
     public void Init(SurfaceView _view)
     {
-        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.obstacle2);
+        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.life);
 
         // Find the surfaceview size or the screen size.
         metrics = _view.getResources().getDisplayMetrics();
@@ -59,7 +59,7 @@ public class ObstacleEntity2 implements EntityBase, Collidable
 
         // Randomize a location to spawn on screen
         Random ranGen = new Random();
-        xStart = xPos = _view.getWidth() + 30;
+        xStart = xPos = _view.getWidth() + 50;
         ScreenHeight = _view.getHeight();
         yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
         //yPos = ScreenHeight * (path / 10);
@@ -139,15 +139,15 @@ public class ObstacleEntity2 implements EntityBase, Collidable
         return ENTITY_TYPE.ENT_DEFAULT;
     }
 
-    public static ObstacleEntity2 Create(){
-        ObstacleEntity2 result = new ObstacleEntity2();
+    public static LifePickup Create(){
+        LifePickup result = new LifePickup();
         EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
         return result;
     }
 
     public String GetType()
     {
-        return "Obstacle2";
+        return "LifePickup";
     }
 
     public float GetPosX()
@@ -173,6 +173,7 @@ public class ObstacleEntity2 implements EntityBase, Collidable
             xPos= xStart;
             Random ranGen = new Random();
             yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
+
             //SetIsDone(true);
         }
     }

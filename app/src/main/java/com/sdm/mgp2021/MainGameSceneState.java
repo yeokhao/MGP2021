@@ -29,6 +29,7 @@ public class MainGameSceneState implements StateBase {
         Ship.Create();
         ObstacleEntity.Create();
         ObstacleEntity2.Create();
+        LifePickup.Create();
 
         PauseButtonEntity.Create();
         AudioManager.Instance.PlayAudio(R.raw.bgmusic,1.0f,true);

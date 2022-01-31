@@ -25,10 +25,10 @@ public class RenderBackground implements EntityBase
     private float xPos, yPos, offset;
     private SurfaceView view = null;
 
-    int[] bg_images = new int[]{R.drawable.scrollbg, R.drawable.gamescene, R.drawable.backgnd};
+    int[] bg_images = new int[]{R.drawable.scrollbg, R.drawable.scrollbg2, R.drawable.scrollbg3};
     int bg_img_index = 0;
 
-    float zoneTime = 10.0f;
+    float zoneTime = 60.0f;
 
     // Check if anything that we want to do with the entity is done. (use for pause)
     @Override

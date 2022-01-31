@@ -62,7 +62,7 @@ public class ObstacleEntity implements EntityBase, Collidable
 
         // Randomize a location to spawn on screen
         Random ranGen = new Random();
-        xStart = xPos = _view.getWidth() + 20;
+        xStart = xPos = _view.getWidth() + 50;
         ScreenHeight = _view.getHeight();
         yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
         //yPos = ScreenHeight * (path / 10);

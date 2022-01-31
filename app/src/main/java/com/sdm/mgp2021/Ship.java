@@ -222,8 +222,8 @@ public class Ship implements EntityBase, Collidable
         paint.setStrokeWidth(200);
         paint.setTypeface(myfont);
         paint.setTextSize(70);
-        _canvas.drawText(scoreText, 30, 120, paint);
-        _canvas.drawText(LivesText,30,150,paint);
+        _canvas.drawText(scoreText, 30, (int)(0.15 * ScreenHeight), paint);
+        _canvas.drawText(LivesText,30,(int)(0.2 * ScreenHeight),paint);
         _canvas.drawBitmap(bmp, xPos, yPos, null);
         _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);
         _canvas.drawBitmap(scaledDownButton, downButtonXpos - scaledDownButton.getWidth() * 0.5f, downButtonYpos - scaledDownButton.getHeight() * 0.5f, null);
@@ -308,6 +308,10 @@ public class Ship implements EntityBase, Collidable
         {
             AudioManager.Instance.PlayAudio(R.raw.damaged, 1.0f,false);
             lives--;
+        }
+        else if (_other.GetType() == "LifePickup")
+        {
+            lives++;
         }
     }
 }
