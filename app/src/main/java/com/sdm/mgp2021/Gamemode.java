@@ -66,6 +66,7 @@ public class Gamemode extends Activity implements View.OnClickListener, StateBas
             endless = true;
             intent.setClass(this, GamePage.class);
             StateManager.Instance.ChangeState("MainGame"); // Default is like a loading page
+            System.out.println(endless);
         }
         else if (v == btn_return)
         {

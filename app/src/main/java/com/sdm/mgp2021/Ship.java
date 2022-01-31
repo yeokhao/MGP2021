@@ -112,6 +112,7 @@ public class Ship implements EntityBase, Collidable
     @Override
     public void Update(float _dt)
     {
+        System.out.println(Gamemode.endless);
         if (GameSystem.Instance.GetIsPaused())
             return;
 
@@ -200,7 +201,7 @@ public class Ship implements EntityBase, Collidable
             moveDown = false;
         }
 
-        if (currScore >= 10 && (Gamemode.endless == true))
+        if (currScore >= 10 && (Gamemode.endless == false))
         {
             //SetIsDone(true);
             GamePage.Instance.SetToEnd();

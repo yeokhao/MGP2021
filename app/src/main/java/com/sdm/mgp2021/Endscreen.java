@@ -58,8 +58,8 @@ public class Endscreen extends Activity implements OnClickListener, StateBase
 
         if (v == btn_retry)
         {
-            intent.setClass(this, GamePage.class);
-            StateManager.Instance.ChangeState("MainGame");
+            intent.setClass(this, Gamemode.class);
+            StateManager.Instance.ChangeState("Gamemode");
         }
         else if (v == btn_exit)
         {
