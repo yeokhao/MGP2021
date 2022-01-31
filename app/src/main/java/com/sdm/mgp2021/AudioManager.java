@@ -25,7 +25,7 @@ public class AudioManager
     // After loading, adjust or set volume
     // volume ranges 0.0f to 1.0f
     // left and right volume (3rd sound)
-    public void PlayAudio(int _id, float _volume)
+    public void PlayAudio(int _id, float _volume , boolean _loop)
     {
         // if audio is loaded
         if (audioMap.containsKey(_id))
@@ -35,12 +35,29 @@ public class AudioManager
             curr.seekTo(0);
             curr.setVolume(_volume, _volume);
             curr.start();
+            if (_loop == true)
+            {
+                curr.setLooping(true);
+            }
+            else
+            {
+                curr.setLooping(false);
+            }
+
         }
         else
         {
             MediaPlayer curr = MediaPlayer.create(view.getContext(), _id);
             audioMap.put(_id, curr);
             curr.start();
+            if(_loop == true)
+            {
+                curr.setLooping(true);
+            }
+            else
+            {
+                curr.setLooping(false);
+            }
         }
     }
 

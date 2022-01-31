@@ -201,12 +201,13 @@ public class Ship implements EntityBase, Collidable
         if (currScore >= 5)
         {
             //SetIsDone(true);
+            GamePage.Instance.SetToEnd();
             //StateManager.Instance.ChangeState("Endscreen");
         }
 
         if (lives <= 0)
         {
-            GamePage.Instance.SetToEnd();
+            GamePage.Instance.SetToLose();
         }
     }
 
@@ -216,11 +217,13 @@ public class Ship implements EntityBase, Collidable
         //spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
         String scoreText = String.format("Score:%d",GameSystem.Instance.GetIntFromSave("Score"));
+        String LivesText = String.format("Lives:%d",lives);
         paint.setARGB(255, red, green, blue);
         paint.setStrokeWidth(200);
         paint.setTypeface(myfont);
         paint.setTextSize(70);
         _canvas.drawText(scoreText, 30, 120, paint);
+        _canvas.drawText(LivesText,30,150,paint);
         _canvas.drawBitmap(bmp, xPos, yPos, null);
         _canvas.drawBitmap(scaledUpButton, upButtonXpos - scaledUpButton.getWidth() * 0.5f, upButtonYpos - scaledUpButton.getHeight() * 0.5f, null);
         _canvas.drawBitmap(scaledDownButton, downButtonXpos - scaledDownButton.getWidth() * 0.5f, downButtonYpos - scaledDownButton.getHeight() * 0.5f, null);
@@ -294,21 +297,16 @@ public class Ship implements EntityBase, Collidable
     {
         if (_other.GetType() == "Obstacle")
         {
-            if (true)
-            {
-                currScore++;
-                GameSystem.Instance.SaveEditBegin();
-                GameSystem.Instance.SetIntInSave("Score", currScore);
-                GameSystem.Instance.SaveEditEnd();
-            }
-            else
-            {
-                score--;
-            }
+            currScore++;
+            GameSystem.Instance.SaveEditBegin();
+            GameSystem.Instance.SetIntInSave("Score", currScore);
+            GameSystem.Instance.SaveEditEnd();
+            AudioManager.Instance.PlayAudio(R.raw.smw_coin, 1.0f,false);
             //SetIsDone(true);
         }
         else if (_other.GetType() == "Obstacle2")
         {
+            AudioManager.Instance.PlayAudio(R.raw.damaged, 1.0f,false);
             lives--;
         }
     }

@@ -79,7 +79,7 @@ public class PauseButtonEntity implements EntityBase
                 float imgRadius = ScaledbmpP.getHeight() * 0.5f;
                 if (Collision.SphereToSphere(TouchManager.Instance.GetPosX(), TouchManager.Instance.GetPosY(), 0.0f, PausexPos, PauseyPos, imgRadius) && buttonDelay >= 0.25)
                 {
-                    AudioManager.Instance.PlayAudio(R.raw.select, 1.0f);
+                    AudioManager.Instance.PlayAudio(R.raw.select, 1.0f,false);
 
                     Paused = true;
 

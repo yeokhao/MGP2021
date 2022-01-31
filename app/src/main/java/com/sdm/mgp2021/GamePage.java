@@ -64,12 +64,16 @@ public class GamePage extends Activity
         Intent intent = new Intent();
         intent.setClass(this, Endscreen.class);
         GamePage.Instance.startActivity(intent);
+        AudioManager.Instance.PlayAudio(R.raw.winsound,1.0f,false);
+        AudioManager.Instance.StopAudio(R.raw.bgmusic);
     }
     public void SetToLose(){
         StateManager.Instance.ChangeState("LoseScreen");
         Intent intent = new Intent();
         intent.setClass(this, LoseScreen.class);
         GamePage.Instance.startActivity(intent);
+        AudioManager.Instance.PlayAudio(R.raw.losesound,1.0f,false);
+        AudioManager.Instance.StopAudio(R.raw.bgmusic);
     }
 }
 

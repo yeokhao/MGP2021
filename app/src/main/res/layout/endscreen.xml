@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="@drawable/blankbg">
+    android:background="@drawable/winscreen">
 
     <Button
         android:id="@+id/btn_retry"
@@ -11,13 +11,12 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="170dp"
-        android:layout_marginRight="304dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginRight="533dp"
         android:background="@drawable/buttonframe"
         android:text="Play Again"
         android:textColor="#00FF00"
-        android:textSize="18dp"
-        />
+        android:textSize="18dp" />
 
     <Button
         android:id="@+id/btn_exit"
@@ -25,13 +24,12 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="250dp"
-        android:layout_marginRight="304dp"
+        android:layout_marginTop="267dp"
+        android:layout_marginRight="533dp"
         android:background="@drawable/buttonframe"
         android:text="Menu"
         android:textColor="#00FF00"
-        android:textSize="18dp"
-        />
+        android:textSize="18dp" />
 
 
 </RelativeLayout>

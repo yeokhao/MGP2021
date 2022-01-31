@@ -31,6 +31,7 @@ public class MainGameSceneState implements StateBase {
         ObstacleEntity2.Create();
 
         PauseButtonEntity.Create();
+        AudioManager.Instance.PlayAudio(R.raw.bgmusic,1.0f,true);
     }
 
     @Override
