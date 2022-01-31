@@ -28,6 +28,7 @@ public class MainGameSceneState implements StateBase {
 
         Ship.Create();
         ObstacleEntity.Create();
+        ObstacleEntity2.Create();
 
         PauseButtonEntity.Create();
     }

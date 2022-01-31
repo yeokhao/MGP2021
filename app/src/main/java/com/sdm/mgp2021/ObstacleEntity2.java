@@ -3,16 +3,13 @@ package com.sdm.mgp2021;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.Paint;
-import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.SurfaceView;
 
 import java.util.Random;
 
-public class ObstacleEntity implements EntityBase, Collidable
+public class ObstacleEntity2 implements EntityBase, Collidable
 {
     private boolean isDone = false;
 
@@ -44,7 +41,9 @@ public class ObstacleEntity implements EntityBase, Collidable
     // For us to intialize or load resource eg: images
     public void Init(SurfaceView _view)
     {
-        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.obstacle);
+        Log.d("test", "obstacle 2 spawned");
+
+        bmp = BitmapFactory.decodeResource(_view.getResources(), R.drawable.obstacle2);
 
         // Find the surfaceview size or the screen size.
         metrics = _view.getResources().getDisplayMetrics();
@@ -62,7 +61,7 @@ public class ObstacleEntity implements EntityBase, Collidable
 
         // Randomize a location to spawn on screen
         Random ranGen = new Random();
-        xStart = xPos = _view.getWidth() + 20;
+        xStart = xPos = _view.getWidth() + 30;
         ScreenHeight = _view.getHeight();
         yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
         //yPos = ScreenHeight * (path / 10);
@@ -90,6 +89,7 @@ public class ObstacleEntity implements EntityBase, Collidable
         //}
 
         xPos -= speed * _dt * obstacleSpeed;
+        //Log.d("obsUpdate", String.valueOf(xPos) + " " + String.valueOf(speed));
 
         // Check if we are out of the screen
         if (xPos <= -bmp.getWidth() * 0.5f)
@@ -101,6 +101,13 @@ public class ObstacleEntity implements EntityBase, Collidable
             yPos = ranGen.nextInt((int)(0.8 * ScreenHeight) + (int)(0.1 * ScreenHeight)); // Returns random value ranging from 1-3
             //yPos = ScreenHeight * (path / 10);
         }
+
+        // NEED TO FIX
+        // Check collision with player or another object
+        //if (Collision.SphereToSphere(xPos, yPos, bmp.getWidth() * 0.5f, GameSystem.Instance.Ship.xPos, GameSystem.Instance.Ship.yPos, GameSystem.Instance.Ship.bmp.getWidth()))
+//        {
+//
+//        }
     }
 
     @Override
@@ -130,19 +137,19 @@ public class ObstacleEntity implements EntityBase, Collidable
     }
 
     @Override
-    public EntityBase.ENTITY_TYPE GetEntityType(){
-        return EntityBase.ENTITY_TYPE.ENT_DEFAULT;
+    public ENTITY_TYPE GetEntityType(){
+        return ENTITY_TYPE.ENT_DEFAULT;
     }
 
-    public static ObstacleEntity Create(){
-        ObstacleEntity result = new ObstacleEntity();
-        EntityManager.Instance.AddEntity(result, EntityBase.ENTITY_TYPE.ENT_DEFAULT);
+    public static ObstacleEntity2 Create(){
+        ObstacleEntity2 result = new ObstacleEntity2();
+        EntityManager.Instance.AddEntity(result, ENTITY_TYPE.ENT_DEFAULT);
         return result;
     }
 
     public String GetType()
     {
-        return "Obstacle";
+        return "Obstacle2";
     }
 
     public float GetPosX()

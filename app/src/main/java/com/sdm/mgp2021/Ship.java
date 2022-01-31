@@ -47,6 +47,7 @@ public class Ship implements EntityBase, Collidable
 
     public float score;
     int currScore;
+    int lives = 3;
     private float buttonDelay = 0;
     private boolean moveUp, moveDown;
 
@@ -200,8 +201,12 @@ public class Ship implements EntityBase, Collidable
         if (currScore >= 5)
         {
             //SetIsDone(true);
-            GamePage.Instance.SetToEnd();
             //StateManager.Instance.ChangeState("Endscreen");
+        }
+
+        if (lives <= 0)
+        {
+            GamePage.Instance.SetToEnd();
         }
     }
 
@@ -301,6 +306,10 @@ public class Ship implements EntityBase, Collidable
                 score--;
             }
             //SetIsDone(true);
+        }
+        else if (_other.GetType() == "Obstacle2")
+        {
+            lives--;
         }
     }
 }

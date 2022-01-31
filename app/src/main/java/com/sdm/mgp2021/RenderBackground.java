@@ -90,7 +90,7 @@ public class RenderBackground implements EntityBase
             zoneTime = 10.0f;
         }
 
-        Log.d("tag", Integer.toString(GetBackgroundIndex()));
+        //Log.d("tag", Integer.toString(GetBackgroundIndex()));
     }
 
     @Override
