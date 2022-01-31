@@ -14,7 +14,7 @@
         android:layout_marginTop="170dp"
         android:layout_marginRight="304dp"
         android:background="@drawable/buttonframe"
-        android:text="Play Again"
+        android:text="Retry?"
         android:textColor="#00FF00"
         android:textSize="18dp"
         />
@@ -28,7 +28,7 @@
         android:layout_marginTop="250dp"
         android:layout_marginRight="304dp"
         android:background="@drawable/buttonframe"
-        android:text="Menu"
+        android:text="Main Menu"
         android:textColor="#00FF00"
         android:textSize="18dp"
         />
