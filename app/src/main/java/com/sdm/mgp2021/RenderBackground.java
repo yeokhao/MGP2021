@@ -28,7 +28,7 @@ public class RenderBackground implements EntityBase
     int[] bg_images = new int[]{R.drawable.scrollbg, R.drawable.scrollbg2, R.drawable.scrollbg3};
     int bg_img_index = 0;
 
-    float zoneTime = 60.0f;
+    float zoneTime = 10.0f;
 
     // Check if anything that we want to do with the entity is done. (use for pause)
     @Override

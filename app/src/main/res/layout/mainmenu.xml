@@ -39,7 +39,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="320dp"
         android:layout_marginRight="640dp"
-        android:background="@drawable/pause"
+        android:background="@drawable/socialmedia"
         android:textSize="18dp" />
 
 </RelativeLayout>
