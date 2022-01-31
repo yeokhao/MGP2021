@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+
+import java.util.Arrays;
 
 public class Endscreen extends Activity implements OnClickListener, StateBase
 {
@@ -33,6 +37,18 @@ public class Endscreen extends Activity implements OnClickListener, StateBase
 
         btn_exit = (Button)findViewById(R.id.btn_exit);
         btn_exit.setOnClickListener(this);
+
+        int Leaderboard[] = new int[5];
+        Leaderboard[0] = GameSystem.Instance.GetIntFromSave("Leaderboard1");
+        Leaderboard[1] = GameSystem.Instance.GetIntFromSave("Leaderboard2");
+        Leaderboard[2] = GameSystem.Instance.GetIntFromSave("Leaderboard3");
+        Leaderboard[3] = GameSystem.Instance.GetIntFromSave("Leaderboard4");
+        Leaderboard[4] = GameSystem.Instance.GetIntFromSave("Leaderboard5");
+        Integer[] Scoreboard= Arrays.stream(Leaderboard).boxed().toArray(Integer[]::new);
+        ListView leaderboardList = findViewById(R.id.leaderboard);
+        ArrayAdapter<Integer> arr = new ArrayAdapter<Integer>(this,R.layout.support_simple_spinner_dropdown_item,Scoreboard);
+
+        leaderboardList.setAdapter(arr);
     }
 
     @Override

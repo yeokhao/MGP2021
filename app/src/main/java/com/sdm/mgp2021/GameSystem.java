@@ -9,7 +9,7 @@ import com.facebook.share.Share;
 // Created by TanSiewLan2021
 
 public class GameSystem {
-    public final static GameSystem Instance = new GameSystem();
+    public final static GameSystem  Instance = new GameSystem();
     public static final String SHARED_PREF_ID = "GameSaveFile";
 
     // Game stuff
@@ -37,6 +37,7 @@ public class GameSystem {
         StateManager.Instance.AddState(new Endscreen());
         StateManager.Instance.AddState(new LoseScreen());
         StateManager.Instance.AddState(new ShareScore());
+        StateManager.Instance.AddState(new Gamemode());
     }
 
     public void SetIsPaused(boolean _newIsPaused)
@@ -85,6 +86,6 @@ public class GameSystem {
 
     public int GetIntFromSave(String _key)
     {
-        return sharedPref.getInt(_key, 10);
+        return sharedPref.getInt(_key, 0);
     }
 }

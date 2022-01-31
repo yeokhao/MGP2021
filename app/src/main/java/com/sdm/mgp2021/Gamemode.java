@@ -4,23 +4,19 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
-// Main Menu -> Game Page -> Game View -> SurfaceView
-// Change State --> "MainGame" State == MainGameSceneState
-
-public class Mainmenu extends Activity implements OnClickListener, StateBase // Using StateBase class
+public class Gamemode extends Activity implements View.OnClickListener, StateBase // Using StateBase class
 {
     // Define buttons. We have 2 buttons (Start, Back)
-    private Button btn_start;
-    private Button btn_back;
-    private Button btn_goto_sharescore;
+    private Button btn_endless;
+    private Button btn_ending;
+    private Button btn_return;
+    public static boolean endless;
 
     @Override
     protected void onCreate (Bundle saveInstanceState){
@@ -32,18 +28,18 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         //Hide Top Bar
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.gamemode);
 
-        btn_start = (Button)findViewById(R.id.btn_start); // noice
-        btn_start.setOnClickListener(this);  // Set Listener to this button --> Start Button
+        btn_endless = (Button)findViewById(R.id.btn_endless); // noice
+        btn_endless.setOnClickListener(this);  // Set Listener to this button --> endless mode
 
-        btn_back = (Button)findViewById(R.id.btn_back);
-        btn_back.setOnClickListener(this);  // Set Listener to this button --> Back Button
+        btn_return = (Button)findViewById(R.id.btn_return);
+        btn_return.setOnClickListener(this);  // Set Listener to this button --> Back Button
 
-        btn_goto_sharescore = (Button)findViewById(R.id.btn_goto_sharescore);
-        btn_goto_sharescore.setOnClickListener(this);  // Set Listener to this button --> Options Button
+        btn_ending = (Button)findViewById(R.id.btn_Ending);
+        btn_ending.setOnClickListener(this);  // Set Listener to this button --> 3 lives mode
 
-        StateManager.Instance.AddState(new Mainmenu());
+        StateManager.Instance.AddState(new Gamemode());
     }
 
     @Override
@@ -63,23 +59,23 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
 
         Intent intent = new Intent();
 
-        if (v == btn_start)
+        if (v == btn_endless)
         {
             //intent -> to set to another class which is another page or screen to be launch.
             //Equal to change screen
-            StateManager.Instance.ChangeState("Gamemode"); // Default is like a loading page
-            intent.setClass(this, Gamemode.class);
-
-            Log.d("tag", "asdanidajsnd");
+            endless = true;
+            intent.setClass(this, GamePage.class);
+            StateManager.Instance.ChangeState("MainGame"); // Default is like a loading page
         }
-        else if (v == btn_back)
+        else if (v == btn_return)
         {
             intent.setClass(this, Mainmenu.class);
         }
-        else if (v == btn_goto_sharescore)
+        else if (v == btn_ending)
         {
-            intent.setClass(this, ShareScore.class);
-            StateManager.Instance.ChangeState("ShareScore");
+            endless = false;
+            intent.setClass(this, GamePage.class);
+            StateManager.Instance.ChangeState("MainGame");
         }
 
         startActivity(intent);
@@ -108,7 +104,7 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
     @Override
     public String GetName()
     {
-        return "Mainmenu";
+        return "Gamemode";
     }
 
     @Override
@@ -129,3 +125,4 @@ public class Mainmenu extends Activity implements OnClickListener, StateBase // 
         super.onDestroy();
     }
 }
+

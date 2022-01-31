@@ -22,6 +22,7 @@ import java.util.Random;
 
 public class Ship implements EntityBase, Collidable
 {
+
     private boolean isDone = false;
     Paint paint = new Paint();
     private Bitmap bmp = null;
@@ -50,6 +51,7 @@ public class Ship implements EntityBase, Collidable
     int lives = 3;
     private float buttonDelay = 0;
     private boolean moveUp, moveDown;
+    //public boolean endless;
 
     @Override
     public boolean IsDone()
@@ -86,7 +88,7 @@ public class Ship implements EntityBase, Collidable
         scaledUpButton = Bitmap.createScaledBitmap(upButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
         scaledDownButton = Bitmap.createScaledBitmap(downButton, (int)(ScreenWidth)/12, (int)(ScreenWidth)/12, true);
 
-        currScore = GameSystem.Instance.GetIntFromSave("Score");
+        //currScore = GameSystem.Instance.GetIntFromSave("Score");
         currScore = 0;
 //        Random ranGen = new Random();
 //        xPos = ranGen.nextFloat() * _view.getWidth();
@@ -198,16 +200,74 @@ public class Ship implements EntityBase, Collidable
             moveDown = false;
         }
 
-        if (currScore >= 5)
+        if (currScore >= 10 && (Gamemode.endless == true))
         {
             //SetIsDone(true);
             GamePage.Instance.SetToEnd();
+            GameSystem.Instance.SaveEditBegin();
+            if(GameSystem.Instance.GetIntFromSave("Leaderboard1")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",GameSystem.Instance.GetIntFromSave("Leaderboard2"));
+                GameSystem.Instance.SetIntInSave("Leaderboard2",GameSystem.Instance.GetIntFromSave("Leaderboard1"));
+                GameSystem.Instance.SetIntInSave("Leaderboard1",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard2")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",GameSystem.Instance.GetIntFromSave("Leaderboard2"));
+                GameSystem.Instance.SetIntInSave("Leaderboard2",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard3")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard4")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard5")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",currScore);
+            }
+            GameSystem.Instance.SetIntInSave("Score",0);
+            GameSystem.Instance.SaveEditEnd();
+
+
             //StateManager.Instance.ChangeState("Endscreen");
         }
 
         if (lives <= 0)
         {
             GamePage.Instance.SetToLose();
+            GameSystem.Instance.SaveEditBegin();
+            if(GameSystem.Instance.GetIntFromSave("Leaderboard1")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",GameSystem.Instance.GetIntFromSave("Leaderboard2"));
+                GameSystem.Instance.SetIntInSave("Leaderboard2",GameSystem.Instance.GetIntFromSave("Leaderboard1"));
+                GameSystem.Instance.SetIntInSave("Leaderboard1",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard2")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",GameSystem.Instance.GetIntFromSave("Leaderboard2"));
+                GameSystem.Instance.SetIntInSave("Leaderboard2",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard3")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",GameSystem.Instance.GetIntFromSave("Leaderboard3"));
+                GameSystem.Instance.SetIntInSave("Leaderboard3",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard4")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",GameSystem.Instance.GetIntFromSave("Leaderboard4"));
+                GameSystem.Instance.SetIntInSave("Leaderboard4",currScore);
+            }
+            else if(GameSystem.Instance.GetIntFromSave("Leaderboard5")<currScore){
+                GameSystem.Instance.SetIntInSave("Leaderboard5",currScore);
+            }
+            GameSystem.Instance.SetIntInSave("Score",0);
+            GameSystem.Instance.SaveEditEnd();
         }
     }
 
@@ -216,8 +276,9 @@ public class Ship implements EntityBase, Collidable
     {
         //spriteSmurf.Render(_canvas, (int)xPos, (int)yPos);
 
-        String scoreText = String.format("Score:%d",GameSystem.Instance.GetIntFromSave("Score"));
+        String scoreText = String.format("Score:%d",currScore);
         String LivesText = String.format("Lives:%d",lives);
+
         paint.setARGB(255, red, green, blue);
         paint.setStrokeWidth(200);
         paint.setTypeface(myfont);
@@ -298,9 +359,9 @@ public class Ship implements EntityBase, Collidable
         if (_other.GetType() == "Obstacle")
         {
             currScore++;
-            GameSystem.Instance.SaveEditBegin();
-            GameSystem.Instance.SetIntInSave("Score", currScore);
-            GameSystem.Instance.SaveEditEnd();
+            //GameSystem.Instance.SaveEditBegin();
+            //GameSystem.Instance.SetIntInSave("Score", currScore);
+            //GameSystem.Instance.SaveEditEnd();
             AudioManager.Instance.PlayAudio(R.raw.smw_coin, 1.0f,false);
             //SetIsDone(true);
         }

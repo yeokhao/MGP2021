@@ -3,17 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/endscreen.xml" value="0.264" />
+        <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/gamemode.xml" value="0.2" />
+        <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/losescreen.xml" value="0.264" />
         <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/mainmenu.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/options.xml" value="0.4" />
+        <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/pause.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/sharescore.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/Chewy/School/Y2S2/MGP/MGP2021/app/src/main/res/layout/splashpage.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP2021/app/src/main/res/layout/mainmenu.xml" value="0.264" />
         <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP2021/app/src/main/res/layout/options.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP2021/app/src/main/res/layout/splashpage.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP_Assignment_1/MGP2021/app/src/main/res/layout/endscreen.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP_Assignment_1/MGP2021/app/src/main/res/layout/losescreen.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP_Assignment_1/MGP2021/app/src/main/res/layout/mainmenu.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP_Assignment_1/MGP2021/app/src/main/res/layout/options.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/yeokh/AndroidStudioProjects/MGP_Assignment_1/MGP2021/app/src/main/res/layout/sharescore.xml" value="0.264" />
       </map>
     </option>
   </component>
