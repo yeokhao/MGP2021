@@ -200,7 +200,7 @@ public class Ship implements EntityBase, Collidable
         if (currScore >= 5)
         {
             //SetIsDone(true);
-            GamePage.Instance.SetToEnd();
+            GamePage.Instance.SetToLose();
             //StateManager.Instance.ChangeState("Endscreen");
         }
     }

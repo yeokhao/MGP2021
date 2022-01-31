@@ -44,25 +44,31 @@ public class GamePage extends Activity
 
         return true;
     }
-    public void setToPause()
-    {
-        Intent intent = new Intent();
-        intent.setClass(this, PauseMenuState.class);
-        StateManager.Instance.ChangeState("PauseMenuState"); // Default is like a loading page
-    }
-
-    public void setToGame()
-    {
-        Intent intent = new Intent();
-        intent.setClass(this, MainGameSceneState.class);
-        StateManager.Instance.ChangeState("MainGameSceneState"); // Default is like a loading page
-    }
+    //public void setToPause()
+    //{
+    //    Intent intent = new Intent();
+    //    intent.setClass(this, PauseMenuState.class);
+    //    StateManager.Instance.ChangeState("PauseMenuState"); // Default is like a loading page
+    //}
+//
+    //public void setToGame()
+    //{
+    //    Intent intent = new Intent();
+    //    intent.setClass(this, MainGameSceneState.class);
+    //    StateManager.Instance.ChangeState("MainGameSceneState"); // Default is like a loading page
+    //}
     public void SetToEnd() {
         //String fuck = null;
         //Log.d(fuck, "fuck");
         StateManager.Instance.ChangeState("Endscreen");
         Intent intent = new Intent();
         intent.setClass(this, Endscreen.class);
+        GamePage.Instance.startActivity(intent);
+    }
+    public void SetToLose(){
+        StateManager.Instance.ChangeState("LoseScreen");
+        Intent intent = new Intent();
+        intent.setClass(this, LoseScreen.class);
         GamePage.Instance.startActivity(intent);
     }
 }

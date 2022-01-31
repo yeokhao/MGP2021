@@ -33,6 +33,7 @@ public class GameSystem {
         StateManager.Instance.AddState(new Mainmenu());
         StateManager.Instance.AddState(new MainGameSceneState());
         StateManager.Instance.AddState(new Endscreen());
+        StateManager.Instance.AddState(new LoseScreen());
     }
 
     public void SetIsPaused(boolean _newIsPaused)
